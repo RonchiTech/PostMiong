@@ -16,7 +16,7 @@
         
 
         <div class="control">
-                <button class="button is-primary" style="margin-top:20px; padding-right:15px;">Submit</button>
+                <button class="button is-primary" style="margin-top:20px; padding-right:25px;">Submit</button>
         </div>
 
 @endsection
