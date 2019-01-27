@@ -27,11 +27,33 @@ class ProjectsController extends Controller
     {
         // return request()->all;
 
-        $project = new Project();
+        // $project = new Project();
 
-        $project->title = request('title');
-        $project->description = request('description');
-        $project->save();
+        // $project->title = request('title');
+        // $project->description = request('description');
+        // $project->save();
+
+
+        // Project::create([
+        //     'title' => request('title'),
+        //     'description' =>('description')
+        // ]);
+        
+        Project::create(
+            request()->validate([
+                'title' => ['required','min:2','max:50'],
+                'description' => ['required','min:7','max:255']
+            ])
+        );
+
+        // Project::create(request([
+
+        //     'title',
+        //     'description'
+
+        //     ]));  
+
+
         return redirect('/projects');
 
     }
@@ -46,10 +68,16 @@ class ProjectsController extends Controller
     public function update(Project $project)
     {
 
-       $project->title= request('title');
-       $project->description = request('description');
+    //    $project->title= request('title');
+    //    $project->description = request('description');
+    //    $project->save();
 
-       $project->save();
+        $project->update(request([
+
+            'title',
+            'description'
+
+            ]));
 
        return redirect('/projects');
 
